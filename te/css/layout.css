@@ -1,0 +1,628 @@
+@charset "utf-8";
+
+/* CSS Document */
+
+@font-face {
+    font-family: 'digifaceregular';
+    src: url('digiface-webfont.woff2') format('woff2'), url('digiface-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Verdana, Geneva, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    color: #000;
+    letter-spacing: 0.0200em;
+    -webkit-font-smoothing: antialiased;
+}
+img {
+    border: none;
+    outline: none;
+}
+a {
+    outline: none;
+}
+.container {
+    width: 100%;
+    height: auto;
+    float: left;
+    position: relative;
+}
+.centerLayout {
+    width: 800px;
+    height: auto;
+    margin: 0 auto;
+    float: none;
+    transition: all 0.3s ease 0s;
+    -webkit-transition: all 0.3s ease 0s;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    font-style: normal;
+    font-weight: normal;
+}
+h1 {
+    margin: 10px 0 0 0;
+    color: #fff;
+    text-align: center;
+}
+.mainbg {
+    background: url(../common/INTROSCREEN_BG.jpg) no-repeat;
+    height: 640px;
+    position: relative;
+}
+.divPos {
+    position: absolute;
+}
+.c-blue {
+    color: #00c7ff;
+}
+.c-pink {
+    color: #ff4522;
+}
+.c-white {
+    color: #fff;
+}
+
+/*Intro*/
+
+.intro-heading {
+    width: 400px;
+    font-size: 18px;
+    top: 90px;
+    left: 160px;
+}
+.intro-content {
+    width: 400px;
+    font-size: 17px;
+    top: 145px;
+    line-height: 22px;
+    left: 160px;
+}
+.intro-content1 {
+    width: 500px;
+    font-size: 15px;
+    top: 390px;
+    line-height: 18px;
+    left: 160px;
+}
+.rules-btn {
+    width: 85px;
+    height: 43px;
+    top: 130px;
+    right: 93px;
+    z-index: 10;
+    background: url(../common/RULE_BUTTON_NOT_HIGHLIGHTED.png) no-repeat;
+}
+.rules-btn:hover {
+    z-index: 11;
+    cursor: pointer;
+    background: url(../common/RULE_BUTTON_HIGHLIGHTED.png) no-repeat;
+}
+.demo-btn {
+    width: 85px;
+    height: 43px;
+    top: 160px;
+    right: 93px;
+    z-index: 10;
+    background: url(../common/DEMO_BUTTON_NOT_HIGHLIGHTED.png) no-repeat;
+}
+.demo-btn:hover {
+    z-index: 11;
+    cursor: pointer;
+    background: url(../common/DEMO_BUTTON_HIGHLIGHTED.png) no-repeat;
+}
+.start-btn {
+    width: 91px;
+    height: 46px;
+    bottom: 72px;
+    left: 355px;
+    z-index: 10;
+    background: url(../common/START_BUTTON_NORMAL.png) no-repeat;
+}
+.start-btn:hover {
+    cursor: pointer;
+    background: url(../common/START_BUTTON_ROLL_OVER.png) no-repeat;
+}
+.rules-container {
+    width: 100%;
+    height: 640px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url(../common/FEEDBACK_POPUP.png) no-repeat top center;
+    z-index: 100000;
+    display: none;
+}
+.close-btn {
+    position: absolute;
+    width: 57px;
+    height: 47px;
+    top: 37px;
+    right: 125px;
+    z-index: 10;
+    background: url(../common/CLOSE_BUTTON_NORMAL.png) no-repeat;
+}
+.close-btn:hover {
+    cursor: pointer;
+    background: url(../common/CLOSE_BUTTON_ROLLOVER.png) no-repeat;
+}
+.rules-heading {
+    position: absolute;
+    width: 400px;
+    height: auto;
+    top: 80px;
+    left: 200px;
+    z-index: 10;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}
+.rules-content {
+    position: absolute;
+    width: 450px;
+    height: auto;
+    top: 125px;
+    left: 160px;
+    z-index: 10;
+    font-size: 14px;
+}
+.rules-content ul li {
+    margin: 20px 0;
+}
+.demo-container {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    z-index: 100003;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none;
+}
+.demo-container video {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    width: 700px;
+    height: auto;
+}
+
+/*Intro END*/
+
+
+/*Clue 1*/
+
+.rules-btn1 {
+    width: 85px;
+    height: 43px;
+    top: 130px;
+    left: 0;
+    z-index: 10;
+    background: url(../common/RULE_NORMAL.png) no-repeat;
+}
+.rules-btn1:hover {
+    z-index: 11;
+    cursor: pointer;
+    background: url(../common/RULE_ROLLOVER.png) no-repeat;
+}
+.demo-btn1 {
+    width: 85px;
+    height: 43px;
+    top: 160px;
+    left: 0;
+    z-index: 10;
+    background: url(../common/DEMO_NORMAL.png) no-repeat;
+}
+.demo-btn1:hover {
+    z-index: 11;
+    cursor: pointer;
+    background: url(../common/DEMO_ROLLOVER.png) no-repeat;
+}
+.close-btn1 {
+    position: absolute;
+    width: 57px;
+    height: 47px;
+    top: 10px;
+    right: 13px;
+    z-index: 10;
+    background: url(../common/CLOSE_BUTTON_NORMAL.png) no-repeat;
+}
+.close-btn1:hover {
+    cursor: pointer;
+    background: url(../common/CLOSE_BUTTON_ROLLOVER.png) no-repeat;
+}
+.cluebg {
+    background: url(../common/BACKGROUND.jpg) no-repeat;
+    height: 640px;
+    position: relative;
+}
+.clueNo {
+    width: auto;
+    height: auto;
+    top: 12px;
+    left: 55px;
+    z-index: 10;
+    font-size: 12px;
+    font-weight: bold;
+    text-shadow: 1px 1px #000;
+}
+.clue-content {
+    width: 600px;
+    font-size: 13px;
+    top: -5px;
+    line-height: 22px;
+    left: 145px;
+}
+.clue-content1 {
+    width: 500px;
+    font-size: 13px;
+    top: 50px;
+    line-height: 18px;
+    left: 145px;
+}
+.drag-moon,
+.drag-moon1 {
+    width: 50px;
+    height: 50px;
+    top: 135px;
+    left: 685px;
+    z-index: 1000;
+    cursor: pointer;
+}
+.drag-moon1 {
+    z-index: 900 !important;
+    display: none;
+    opacity: 0;
+}
+.submit-btn {
+    position: absolute;
+    width: 91px;
+    height: 46px;
+    top: 245px;
+    right: 85px;
+    z-index: 10;
+    background: url(../common/SUBMIT_BUTTON_NORMAL.png) no-repeat;
+}
+.submit-btn:hover {
+    z-index: 11;
+    cursor: pointer;
+    background: url(../common/SUBMIT_BUTTON_ROLLOVER.png) no-repeat;
+}
+.reset-btn {
+	position: absolute;
+	width: 109px;
+	height: 67px;
+	top: 245px;
+	right: -15px;
+	z-index: 10;
+	background: url(../common/RESET_BUTTON_NORMAL.png) no-repeat;
+}
+.reset-btn:hover {
+    z-index: 11;
+    cursor: pointer;
+    background: url(../common/RESET_BUTTON_ROLLOVER.png) no-repeat;
+}
+.next-btn {
+    position: absolute;
+    width: 109px;
+    height: 67px;
+    top: 236px;
+    right: -5px;
+    z-index: 10;
+    background: url(../common/RESET_BUTTON_NORMAL.png) no-repeat;
+}
+.reset-btn:hover {
+    z-index: 11;
+    cursor: pointer;
+    background: url(../common/RESET_BUTTON_ROLLOVER.png) no-repeat;
+}
+.score-panel {
+    position: absolute;
+    width: 185px;
+    height: 210px;
+    top: 310px;
+    right: 0;
+    z-index: 10;
+    background: url(../common/SCORE_PANEL.png) no-repeat;
+}
+.score-panel1 {
+    position: absolute;
+    width: 185px;
+    height: 210px;
+    top: 225px;
+    left: 0;
+    z-index: 10;
+}
+.score {
+    position: absolute;
+    font-family: 'digifaceregular';
+    font-size: 40px;
+    top: 6px;
+    left: 76px;
+    line-height: 0;
+    z-index: 10;
+}
+.score1 {
+    line-height: 30px !important; 
+    text-align: center; 
+    width: 200px !important;
+    height: auto;
+    position: absolute;
+    font-family: 'digifaceregular';
+    font-size: 34px;
+    top: 0px;
+    left: 20px;
+    z-index: 10;
+}
+.moon-state {
+    position: absolute;
+    width: 127px;
+    height: 128px;
+    z-index: 10;
+    top: 60px;
+    left: 40px;
+}
+.next-btn {
+    position: absolute;
+    width: 91px;
+    height: 46px;
+    top: 530px;
+    right: 5px;
+    z-index: 100002;
+    opacity: 0.4;
+    background: url(../common/NEXT_BUTTON_NORMAL.png) no-repeat;
+}
+.next-btn-roll:hover {
+    background: url(../common/NEXT_BUTTON_ROLLOVER.png) no-repeat;
+    cursor: pointer;
+}
+.orbit {
+    position: absolute;
+    width: 383px;
+    height: 383px;
+    top: 180px;
+    left: 155px;
+    z-index: 10;
+    /*background: url(../common/EARTH_AND_MOON_ORBIT.png) no-repeat;*/
+}
+.moon-drop {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    z-index: 20;
+    background: url(../common/moon/MOON_DROP_CIRCLE.png) no-repeat;
+    opacity: 0;
+}
+.drop1 {
+    top: 158px;
+    left: 320px;
+}
+.drop2 {
+    top: 214px;
+    left: 456px;
+}
+.drop3 {
+    top: 342px;
+    left: 512px;
+}
+.drop4 {
+    left: 458px;
+    top: 480px;
+}
+.drop5 {
+    top: 535px;
+    left: 320px;
+}
+.drop6 {
+    top: 480px;
+    left: 184px;
+}
+.drop7 {
+    top: 342px;
+    left: 132px;
+}
+.drop8 {
+    top: 214px;
+    left: 184px;
+}
+.feedback-popup {
+    width: 800px;
+    height: 640px;
+    top: 0;
+    left: 0;
+    background: url(../common/FEEDBACK_POPUP.png) no-repeat top center;
+    z-index: 10000;
+    display: none;
+}
+.feedback-popup-small {
+    width: 800px;
+    height: 640px;
+    top: 0;
+    left: 0;
+    background: url(../common/popup-small.png) no-repeat top center;
+    z-index: 10000;
+    display: none;
+}
+.close-btn-popup {
+    position: absolute;
+    width: 57px;
+    height: 47px;
+    top: 38px;
+    right: 123px;
+    z-index: 10;
+    background: url(../common/CLOSE_BUTTON_NORMAL.png) no-repeat;
+}
+.close-btn-popup-small {
+    top: 128px !important;
+    right: 123px;
+}
+.close-btn-popup:hover {
+    cursor: pointer;
+    background: url(../common/CLOSE_BUTTON_ROLLOVER.png) no-repeat;
+}
+.popup-head {
+    position: absolute;
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: bold;
+    top: 100px;
+    left: 190px;
+    width: 450px;
+}
+.popup-content {
+    position: absolute;
+    font-size: 15px;
+    top: 100px;
+    left: 190px;
+    width: 450px;
+    margin: 20px 0 0 0;
+    line-height: 20px;
+    text-align: center;
+}
+.popup-content img {
+    margin: 30px 0;
+}
+.popup-content p {
+    text-align: left !important;
+}
+.popup-small-head {
+    position: absolute;
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: bold;
+    top: 210px;
+    left: 190px;
+    width: 450px;
+}
+.popup-small-content {
+    position: absolute;
+    font-size: 15px;
+    top: 220px;
+    left: 190px;
+    width: 450px;
+    margin: 20px 0 0 0;
+    line-height: 20px;
+}
+.allOut {
+    width: 100%;
+    height: 640px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    z-index: 100001;
+    display: none;
+}
+.moon-state img {
+    display: none;
+    opacity: 0;
+}
+.moon-state p {
+    display: block;
+}
+.resultbg {
+    background: url(../common/MEDAL_SCREEN_BG.jpg) no-repeat;
+    /*background: url(../common/delete.jpg) no-repeat;*/
+    height: 640px;
+    position: relative;
+}
+.resultMedal {
+    width: 241px;
+    height: 274px;
+    position: absolute;
+    top: 110px;
+    left: 200px;
+    z-index: 100;
+}
+.resultText {
+    width: 370px;
+    height: auto;
+    position: absolute;
+    top: 250px;
+    left: 390px;
+    z-index: 100;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: bold;
+    line-height: 30px;
+}
+.resultInstruction {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 430px;
+    left: 0;
+    z-index: 100;
+    font-size: 15px;
+    text-align: center;
+}
+.resultNext {
+    position: absolute;
+    width: 109px;
+    height: 67px;
+    bottom: 160px;
+    left: 255px;
+    z-index: 10;
+    background: url(../common/NEXT_BUTTON_NORMAL.png) no-repeat;
+}
+.resultNext:hover {
+    z-index: 11;
+    cursor: pointer;
+    background: url(../common/NEXT_BUTTON_ROLLOVER.png) no-repeat;
+}
+#mymedal {
+    opacity: 0;
+}
+.arc-1 {
+    width: 128px;
+    height: 127px;
+    position: absolute;
+    top: 189px;
+    right: 270px;
+    z-index: 10;
+    background: url(../common/ARC_1_30_new.png) no-repeat;
+    opacity: 0;
+}
+.arc-4 {
+    width: 127px;
+    height: 123px;
+    position: absolute;
+    top: 432px;
+    right: 271px;
+    z-index: 10;
+    background: url(../common/ARC_4_30_new.png) no-repeat;
+    opacity: 0;
+}
+.arc-7 {
+    width: 123px;
+    height: 122px;
+    position: absolute;
+    top: 433px;
+    left: 164px;
+    z-index: 10;
+    background: url(../common/ARC_7_30_new.png) no-repeat;
+    opacity: 0;
+}
+.arc-10 {
+    width: 123px;
+    height: 126px;
+    position: absolute;
+    top: 189px;
+    left: 163px;
+    z-index: 10;
+    background: url(../common/ARC_10_30_new.png) no-repeat;
+    opacity: 0;
+}

@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Demo Astronomy | Result</title>
+    <link href="css/layout.css" rel="stylesheet">
+</head>
+
+<body oncontextmenu="return false;">
+    <div class="centerLayout">
+        <div class="container resultbg">
+            <div class="resultMedal divPos">
+                <img src="common/EMPTY_MEDAL.png" id="mymedal">
+            </div>
+            <div class="resultText divPos c-white">శుభాభినందనలు!
+                <br>మీరు ఒక స్వర్ణ పతకం గెలిచారు!
+            </div>
+            <div class="resultInstruction divPos c-white"> మొదటి ట్యాబ్‌కు వెళ్లండి మరియు భూమి యొక్క దశల పైన క్లిక్ చేయండి.</div>
+            <div class="score-panel1 divPos">
+                <div class="score1 c-blue" style="line-height: 30px !important; text-align: center; width: 200px;"></div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<script src="../scripts/moon.js"></script>
+<script src="../scripts/cookie.js"></script>
+<script>
+    $(function() {
+        moon.readData();
+        getScore();
+
+        function getScore() {
+
+
+            showScore = parseInt(localStorage.getItem("totalscore"));
+            moon.end();
+            moon.updateScore(showScore);
+            if (showScore >= 0 && showScore <= 9) {
+                $('.score1').html('మొత్తం స్కోరు<br><br>0' + showScore);
+            } else {
+                $('.score1').html('మొత్తం స్కోరు<br><br>' + showScore);
+            }
+        }
+
+
+
+        if (showScore >= 12 && showScore <= 14) {
+            $('#mymedal').attr('src', 'common/GOLD_MEDAL.png');
+            $('.resultText').html('శుభాభినందనలు!<br>మీరు ఒక స్వర్ణ పతకం గెలిచారు!!');
+        } else if (showScore >= 9 && showScore <= 11) {
+            $('#mymedal').attr('src', 'common/SILVER_MEDAL.png');
+            $('.resultText').html('మీరు ఒక రజత పతకం గెలిచారు!<br>బాగా చేసారు.');
+        } else if (showScore >= 6 && showScore <= 8) {
+            $('#mymedal').attr('src', 'common/BRONZE_MEDAL.png');
+            $('.resultText').html('మీరు కాంశ్య పతకం గెలిచారు!  మంచి పని. కొద్ది అభ్యాసంతో, మీరు స్వర్ణం గెలవచ్చు');
+        } else if (showScore <= 5) {
+            $('.resultText').html('కొంచెం ఆచరణలో, మీరు బాగా చేయగలరు.');
+        }
+        $("#mymedal").animate({
+            opacity: 1
+        }, 2000, function() {
+            //function
+        });
+    });
+
+</script>
+
+</html>

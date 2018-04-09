@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Demo Astronomy | Intro</title>
+    <link href="css/layout.css" rel="stylesheet">
+</head>
+
+<body oncontextmenu="return false;">
+    <div class="centerLayout">
+        <div class="container mainbg">
+            <div class="intro-heading c-blue divPos">AstRoamer: Moon Track</div>
+
+            <div class="intro-content c-blue divPos">
+                <p>You have learnt about the phases of the Moon. Test your knowledge by playing AstRoamer: Moon Track.</p>
+                <p>In this activity, you will be given seven clues. Every correct answer gets you points. The more points you collect, the better your chance of winning.</p>
+                <p>Are you ready?</p>
+            </div>
+
+            <div class="intro-content1 c-white divPos">
+                <p>Click the <strong>Rules</strong> button to read the rules of the activity.</p>
+                <p>Click the <strong>Demo</strong> button to watch a demo on how to do the activity.</p>
+                <p>Then, click <strong>Start</strong> to begin.</p>
+            </div>
+
+            <div class="rules-btn divPos"></div>
+            <div class="demo-btn divPos"></div>
+            <a onclick="start();">
+                <div class="start-btn divPos"></div>
+            </a>
+
+            <div class="rules-container divPos">
+                <div class="close-btn"></div>
+                <div class="rules-heading c-blue">
+                    Activity Rules
+                </div>
+                <div class="rules-content c-blue">
+                    <ul>
+                        <li>You will be given seven clues, one at a time.</li>
+                        <li>Read each clue and identify which phase of the Moon it describes.</li>
+                        <li>Then drag and drop the Moon to the correct position in the Moon's orbit.</li>
+                        <li>Then, click Submit to check your answer.</li>
+                        <li>If you answer correctly in the first attempt, you score two points. If you answer correctly in the second attempt, you score one point.</li>
+                        <li>The more points you win, the better your chances of winning the prize.</li>
+                    </ul>
+                    <span class="c-white">Click X to continue.</span>
+                </div>
+            </div>
+
+            <div class="demo-container divPos">
+                <video controls>
+                    <source src="video/Astronomy-U2-L7-Demo.mp4" type="video/mp4">
+                    <source src="video/Astronomy-U2-L7-Demo.ogg" type="video/ogg"> Your browser does not support HTML5 video.
+                </video>
+                <div class="close-btn1"></div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+</body>
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<script src="../scripts/moon.js"></script>
+<script src="../scripts/cookie.js"></script>
+<script>
+    $(function() {
+        var myscore = 0;
+        var totalScore = 0;
+
+        localStorage.setItem("score1", myscore);
+        localStorage.setItem("score2", myscore);
+        localStorage.setItem("score3", myscore);
+        localStorage.setItem("score4", myscore);
+        localStorage.setItem("score5", myscore);
+        localStorage.setItem("score6", myscore);
+        localStorage.setItem("score7", myscore);
+        localStorage.setItem("totalscore", myscore);
+
+        $('.rules-btn').click(function() {
+            $('.rules-container').css('display', 'block');
+        });
+
+        $('.close-btn').click(function() {
+            $('.rules-container').css('display', 'none');
+        });
+
+        $('.demo-btn').click(function() {
+            $('video')[0].play();
+            $('.demo-container').css('display', 'block');
+        });
+
+        $('.close-btn1').click(function() {
+            $('video')[0].pause();
+            $('.demo-container').css('display', 'none');
+        });
+        setuserdetail();
+    });
+
+    function start() {
+        moon.start('en');
+        window.location.href = "clue1.html";
+    }
+
+</script>
+
+</html>

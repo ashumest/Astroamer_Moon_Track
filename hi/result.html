@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Demo Astronomy | Result</title>
+    <link href="css/layout.css" rel="stylesheet">
+</head>
+
+<body oncontextmenu="return false;">
+    <div class="centerLayout">
+        <div class="container resultbg">
+            <div class="resultMedal divPos">
+                <img src="common/EMPTY_MEDAL.png" id="mymedal">
+            </div>
+            <div class="resultText divPos c-white">वाह, क्या बात है!
+                <br>आपने स्वर्ण पदक जीता है!
+            </div>
+            <div class="resultInstruction divPos c-white">पहले टैब पर जाइए और <strong>पृथ्वी की कलाएं</strong> बटन पर क्लिक कीजिए।</div>
+            <div class="score-panel1 divPos">
+                <div class="score1 c-blue" style="line-height: 30px !important; text-align: center; width: 200px;"></div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<script src="../scripts/moon.js"></script>
+<script src="../scripts/cookie.js"></script>
+<script>
+    $(function() {
+        moon.readData();
+        getScore();
+
+        function getScore() {
+
+
+            showScore = parseInt(localStorage.getItem("totalscore"));
+            moon.end();
+            moon.updateScore(showScore);
+            if (showScore >= 0 && showScore <= 9) {
+                $('.score1').html('कुल स्कोर<br><br>0' + showScore);
+            } else {
+                $('.score1').html('कुल स्कोर<br><br>' + showScore);
+            }
+        }
+
+
+
+        if (showScore >= 12 && showScore <= 14) {
+            $('#mymedal').attr('src', 'common/GOLD_MEDAL.png');
+            $('.resultText').html('वाह, क्या बात है!<br>आपने स्वर्ण पदक जीता है!');
+        } else if (showScore >= 9 && showScore <= 11) {
+            $('#mymedal').attr('src', 'common/SILVER_MEDAL.png');
+            $('.resultText').html('आपने रजत पदक जीता है!<br>बहुत बढ़िया|');
+        } else if (showScore >= 6 && showScore <= 8) {
+            $('#mymedal').attr('src', 'common/BRONZE_MEDAL.png');
+            $('.resultText').html('आपने कांस्य पदक जीता है! आपने अच्छा काम किया| थोड़ी और मेहनत करके करने पर आप स्वर्ण पदक भी जीत सकते हैं।');
+        } else if (showScore <= 5) {
+            $('.resultText').html('अगली कोशिश में और ज्यादा मेहनत कीजिए।');            
+        }
+        $("#mymedal").animate({
+            opacity: 1
+        }, 2000, function() {
+            //function
+        });
+    });
+
+</script>
+
+</html>

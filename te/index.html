@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Demo Astronomy | Intro</title>
+    <link href="css/layout.css" rel="stylesheet"> 
+</head>
+
+<body oncontextmenu="return false;">
+    <div class="centerLayout">
+        <div class="container mainbg">
+            <div class="intro-heading c-blue divPos">ఖగోళ శాస్త్రజ్ఞుడు : మూన్ ట్రాకర్ </div>
+
+            <div class="intro-content c-blue divPos">
+                <p>మీరు చంద్రుని యొక్క దశల గురించి నేర్చుకున్నారు. మీ పరిజ్ఞానాన్ని ఖగోళ శాస్త్రజ్ఞుడు: మూన్ ట్రాకర్ ఆడటం ద్వారా పరీక్షించుకోండి.</p>
+                <p>ఈ కార్యకలాపంలో మీకు ఏడు ఆధారాలు ఇవ్వబడతాయి. ప్రతి సరియైన జవాబు మీకు పాయింట్లు ఇస్తుంది. మీరు ఎక్కువ పాయింట్లు సేకరిస్తే, మీరు గెలిచే అవకాశం బాగా ఉంటుంది.</p>
+                <p>మీరు సిద్ధంగా ఉన్నారా? </p>
+            </div>
+
+            <div class="intro-content1 c-white divPos">
+                <p>ఈ కార్యకలాపం యొక్క నియమాలు చదవడానికి<strong>నియమాలు</strong> బటన్‌ని క్లిక్ చేయండి.</p>
+                <p>కార్యకలాపం ఎలా చేయాలో గురించి డెమో చూడటానికి  <strong>డెమో</strong> బటన్‌ని క్లిక్ చేయండి.</p>
+                <p>తరువాత ప్రారంభించడానికి,  <strong>స్టార్ట్</strong> క్లిక్ చేయండి.</p>
+            </div>
+
+            <div class="rules-btn divPos"></div>
+            <div class="demo-btn divPos"></div>
+            <a onclick="start();">
+                <div class="start-btn divPos"></div>
+            </a>
+
+            <div class="rules-container divPos">
+                <div class="close-btn"></div>
+                <div class="rules-heading c-blue">
+                    ఖగోళ శాస్త్రజ్ఞుడు : మూన్ ట్రాకర్:  నియమాలు
+                </div>
+                <div class="rules-content c-blue">
+                    <ul>
+                        <li>మీకు ఏడు ఆధారాలు, ఒకటి ఒకసారి ఇవ్వబడుతుంది.</li>
+                        <li>ఒక్కో ఆధారం జాగ్రత్తగా చదవండి మరియు ఇది చంద్రుని ఒక్క ఏ దశను వర్ణిస్తుందో గుర్తించండి.</li>
+                        <li>తరువాత చంద్రుడి యొక్క కక్ష్యలో చంద్రుడిని సరియైన ప్రదేశంలోకి డ్రాగ్ చేసి మరియు డ్రాప్ చేయండి. </li>
+                        <li>సబ్మిట్ క్లిక్ చేయండి.</li>
+                        <li>మొదటి ప్రయత్నంలో మీరు సరిగా జవాబిస్తే, మీరు రెండు పాయింట్లు స్కోర్ చేస్తారు. రెండవ ప్రయత్నంలో మీరు సరిగా జవాబిస్తే, మీరు ఒక పాయింట్ స్కోర్ చేస్తారు.</li>
+                        <li>మీరు ఎక్కువ పాయింట్లు గెలిస్తే, మీరు బహుమతి గెలిచే అవకాశాలు బాగా ఉంటాయి.</li>
+                    </ul>
+                    <span class="c-white">కొనసాగడానికి X క్లిక్ చేయండి.</span>
+                </div>
+            </div>
+
+            <div class="demo-container divPos">
+                <video controls>
+                    <source src="video/Astronomy-U2-L7-Demo.mp4" type="video/mp4">
+                    <source src="video/Astronomy-U2-L7-Demo.ogg" type="video/ogg"> Your browser does not support HTML5 video.
+                </video>
+                <div class="close-btn1"></div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+</body>
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<script src="../scripts/moon.js"></script>
+<script src="../scripts/cookie.js"></script>
+<script>
+    $(function() {
+        var myscore = 0;
+        var totalScore = 0;
+        
+        localStorage.setItem("score1", myscore);
+        localStorage.setItem("score2", myscore);
+        localStorage.setItem("score3", myscore);
+        localStorage.setItem("score4", myscore);
+        localStorage.setItem("score5", myscore);
+        localStorage.setItem("score6", myscore);
+        localStorage.setItem("score7", myscore);
+        localStorage.setItem("totalscore", myscore);
+        
+        $('.rules-btn').click(function() {
+            $('.rules-container').css('display', 'block');
+        });
+        
+        $('.close-btn').click(function() {
+            $('.rules-container').css('display', 'none');
+        });
+        
+        $('.demo-btn').click(function() {
+            $('video')[0].play();
+            $('.demo-container').css('display', 'block');
+        });
+        
+        $('.close-btn1').click(function() {
+            $('video')[0].pause();
+            $('.demo-container').css('display', 'none');
+        });
+        setuserdetail();
+    });
+    function start() {
+        moon.start('te');
+        window.location.href = "clue1.html";
+    }
+
+</script>
+
+</html>

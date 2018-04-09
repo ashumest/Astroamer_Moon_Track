@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Demo Astronomy | Intro</title>
+    <link href="css/layout.css" rel="stylesheet">
+</head>
+
+<body oncontextmenu="return false;">
+    <div class="centerLayout">
+        <div class="container mainbg">
+            <div class="intro-heading c-blue divPos">एस्ट्रोमर:चंद्र दर्शन</div>
+
+            <div class="intro-content c-blue divPos">
+                <p>आपने चंद्रमा की कलाओं के बारे में सीखा। अब एस्ट्रोमर: चंद्र दर्शन को खेलकर अपना ज्ञान बढ़ाइए।</p>
+                <p>इस गतिविधि में आपको सात संकेत दिये जाएंगे। हर सही उत्तर पर आपको अंक मिलेंगे। आप जितने अंक इकट्ठा करेंगे, आपके जीतने की संभावना उतनी ही बढ़ेगी।
+                </p>
+                <p> क्या आप तैयार हैं?</p>
+            </div>
+
+            <div class="intro-content1 c-white divPos">
+                <p>गतिविधि के नियम जानने के लिए <strong>नियम</strong> बटन पर क्लिक करें।</p>
+                <p>गतिविधि कैसे करनी है यह समझने के लिए <strong>डेमों</strong> बटन पर क्लिक करें।</p>
+                <p>फिर, शुरु करने के लिए <strong> शुरु करें</strong> बटन पर क्लिक करें।</p>
+            </div>
+
+            <div class="rules-btn divPos"></div>
+            <div class="demo-btn divPos"></div>
+            <a onclick="start();">
+                <div class="start-btn divPos"></div>
+            </a>
+
+            <div class="rules-container divPos">
+                <div class="close-btn"></div>
+                <div class="rules-heading c-blue">
+                    गतिविधि नियम
+                </div>
+                <div class="rules-content c-blue">
+                    <ul>
+                        <li>आपको एक-एक करके सात संकेत दिए जाएंगे।</li>
+                        <li>प्रत्येक संकेत को पढ़ें और पहचानें कि वह चंद्रमा की किस कला का वर्णन कर रहा है।</li>
+                        <li>फिर चंद्रमा को खींचकर उसे उसकी कक्षा में सही स्थान पर रखें।</li>
+                        <li>अपना उत्तर जाँचने के लिए <strong>जमा करें</strong> बटन पर क्लिक करें।</li>
+                        <li>पहले प्रयास में सही उत्तर देने पर आपको दो अंक मिलेंगे। यदि आपने दूसरे प्रयास में सही उत्तर दिया तो आपको एक अंक मिलेगा।</li>
+                        <li>आप जितने अंक जीतेंगे, आपके इनाम जीतने की संभावना भी उतनी ही बढ़ेगी।</li>
+                    </ul>
+                    <span class="c-white">आगे जाने के लिए X पर क्लिक करें।</span>
+                </div>
+            </div>
+
+            <div class="demo-container divPos">
+                <video controls>
+                    <source src="video/Astronomy-U2-L7-Demo.mp4" type="video/mp4">
+                    <source src="video/Astronomy-U2-L7-Demo.ogg" type="video/ogg"> Your browser does not support HTML5 video.
+                </video>
+                <div class="close-btn1"></div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+</body>
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<script src="../scripts/moon.js"></script>
+<script src="../scripts/cookie.js"></script>
+<script>
+    $(function() {
+        var myscore = 0;
+        var totalScore = 0;
+
+        localStorage.setItem("score1", myscore);
+        localStorage.setItem("score2", myscore);
+        localStorage.setItem("score3", myscore);
+        localStorage.setItem("score4", myscore);
+        localStorage.setItem("score5", myscore);
+        localStorage.setItem("score6", myscore);
+        localStorage.setItem("score7", myscore);
+        localStorage.setItem("totalscore", myscore);
+
+        $('.rules-btn').click(function() {
+            $('.rules-container').css('display', 'block');
+        });
+
+        $('.close-btn').click(function() {
+            $('.rules-container').css('display', 'none');
+        });
+
+        $('.demo-btn').click(function() {
+            $('video')[0].play();
+            $('.demo-container').css('display', 'block');
+        });
+
+        $('.close-btn1').click(function() {
+            $('video')[0].pause();
+            $('.demo-container').css('display', 'none');
+        });
+        setuserdetail();
+    });
+
+    function start() {
+        moon.start('hi');
+        window.location.href = "clue1.html";
+    }
+
+</script>
+
+</html>
