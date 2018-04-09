@@ -1,7 +1,6 @@
 // JavaScript source code
 var myData = {
     "appData": {
-        "appName":"",
         // "user_id": 0,
         "starttime": "",
         "endtime": "",
@@ -16,26 +15,48 @@ var myData = {
 }
 var attempt = {
     "qid": 0,
+    "starttime": "",
+    "endtime": "",
     "failattempt": [
     ],
     "answer": {
         "answerid": 0,
-        "time": ""
+        "answertime": ""
     }
 }
 var failattempt = {
     "optionid": "",
-    "time": ""
+    "answertime": ""
 }
 var moon = {
     start: function (lng) {
         myData.userId = $.cookie("user_id");
         myData.buddyIds = $.cookie("buddy_ids");
-        myData.appData.appName = "Astroamer_Moon_Track";
+        myData.appName = "Astroamer_Moon_Track";
         // myData.user.session_id = $.cookie("session_id");
         myData.createdAt = timeStamp();
         myData.appData.starttime = timeStamp();
         myData.language = lng;
+        moon.save();
+    },
+    addQuestion: function () {
+        console.log(qid);
+        //debugger;
+        var obj = null;
+        for (var i = 0; i <= myData.attempt.length - 1; i++) {
+            if (myData.attempt[i].qid == qid) {
+                obj = myData.attempt[i];
+                break;
+            }
+        }
+        if (obj == null) {
+            obj = $.extend(true, {}, attempt);
+            obj.qid = qid;
+            myData.attempt.push(obj);
+        } else {
+            obj.qid = qid;
+        }
+        myData.attempt[qid-1].starttime = timeStamp();
         moon.save();
     },
     addAnswer: function (id, e) {
@@ -53,11 +74,11 @@ var moon = {
             obj.qid = qid;
             if (e) {
                 obj.answer = id;
-                obj.time = timeStamp();
+                obj.answertime = timeStamp();
             } else {
                 var att = $.extend(true, {}, failattempt);
                 att.optionid = id
-                att.time = timeStamp();
+                att.answertime = timeStamp();
                 obj.failattempt.push(att);
             }
             myData.attempt.push(obj);
@@ -65,11 +86,11 @@ var moon = {
             obj.qid = qid;
             if (e) {
                 obj.answer = id;
-                obj.time = timeStamp();
+                obj.answertime = timeStamp();
             } else {
                 var att = $.extend(true, {}, failattempt);
                 att.optionid = id
-                att.time = timeStamp();
+                att.answertime = timeStamp();
                 obj.failattempt.push(att);
             }
         }
