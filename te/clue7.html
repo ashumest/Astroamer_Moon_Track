@@ -131,7 +131,7 @@
     var dropId = '';
     $(function() {
         moon.readData();
-
+        moon.addQuestion();
         getScore();
 
         $('.rules-btn1').click(function() {
@@ -359,6 +359,8 @@
 
         $('.next-btn').click(function() {
             if ($(this).css('opacity') == 1) {
+                myData.attempt[qid - 1].endtime = timeStamp();
+                moon.save();
                 window.open('result.html', '_self');
             }
         });
