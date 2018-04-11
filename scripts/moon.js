@@ -9,7 +9,7 @@ var myData = {
         "tool_startTime": "",
         "language": "",
         "attempt": [],
-        "eventType": "tool_end",
+        "eventType1": "tool_end",
         "tool_endTime": "",
         "totalScore": "",
         "createdAt": ""
