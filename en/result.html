@@ -36,13 +36,14 @@
 
 
             showScore = parseInt(localStorage.getItem("totalscore"));
-            moon.end();
-            moon.updateScore(showScore);
             if (showScore >= 0 && showScore <= 9) {
                 $('.score1').html('Total Score<br><br>0' + showScore);
+                moon.end('0' + showScore);
             } else {
                 $('.score1').html('Total Score<br><br>' + showScore);
+                moon.end(showScore);
             }
+            moon.updateScore(showScore);
         }
 
 

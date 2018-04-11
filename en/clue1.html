@@ -137,7 +137,7 @@
     var dropId = '';
     $(function() {
         moon.readData();
-        moon.addQuestion();
+        moon.addQuestion('When Gautama Buddha was born, the Full Moon lit up the night. Where in the orbit would this moon be?');
         getScore();
 
         $('.rules-btn1').click(function() {
@@ -227,27 +227,27 @@
                             $('.popup-content').html('<p>If the Moon is in the position you have chosen, you will see the Moon approximately as in this picture in the sky.</p><img src="common/moon/moon_12.00.png"><p>Half of the Moon is always lit by sunlight. To see the Full Moon you have to position it such that all of the lit part is visible from the Earth.</p><p>If you need help with the activity, click the Demo button.</p><p class="c-white">Click X to continue.</p>');
                         }
 
-                        moon.addAnswer(dropId, false);
+                        moon.addAnswer(dropId, false, playattempt);
                         $('.feedback-popup').css('display', 'block');
                     } else {
                         myscore = myscore + 2;
                         $('.popup-small-head').html('Well done!')
                         $('.popup-small-content').html('<p>We see the Full Moon when the entire lit part of the Moon is visible from the Earth.</p><p class="c-white">Click X to continue.</p>');
                         $('.feedback-popup-small').css('display', 'block');
-                        moon.addAnswer(dropId, true);
+                        moon.addAnswer(dropId, true, playattempt);
                     }
                 } else {
                     if (status == 'wrong') {
                         $('.popup-small-head').html('Sorry!')
                         $('.popup-small-content').html('<p>We see the Full Moon when the entire lit part of the Moon is visible from the Earth.</p><p class="c-white">Click X to continue.</p>');
                         $('.feedback-popup-small').css('display', 'block');
-                        moon.addAnswer(dropId, false);
+                        moon.addAnswer(dropId, false, playattempt);
                     } else {
                         myscore = myscore + 1;
                         $('.popup-small-head').html('Well done!')
                         $('.popup-small-content').html('<p>We see the Full Moon when the entire lit part of the Moon is visible from the Earth.</p><p class="c-white">Click X to continue.</p>');
                         $('.feedback-popup-small').css('display', 'block');
-                        moon.addAnswer(dropId, true);
+                        moon.addAnswer(dropId, true, playattempt);
                     }
                 }
                 playattempt++;
@@ -368,7 +368,8 @@
 
         $('.next-btn').click(function() {
             if ($(this).css('opacity') == 1) {
-                myData.attempt[qid-1].endtime = timeStamp();
+                myData.appData.attempt[qid-1].clue_endTime = timeStamp();
+                myData.appData.attempt[qid-1].createdAt = timeStamp();
                 moon.save();
                 window.open('clue2.html', '_self');
             }

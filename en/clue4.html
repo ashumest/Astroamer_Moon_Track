@@ -132,7 +132,7 @@
     $(function() {
 
         moon.readData();
-        moon.addQuestion();
+        moon.addQuestion('After Ramadan when you see the Waxing Crescent, it is time to exchange Eid presents. Where in the orbit will this moon be?');
         getScore();
 
         $('.rules-btn1').click(function() {
@@ -222,27 +222,27 @@
                         } else if (wrongNo == '7' || wrongNo == '7-a') {
                             $('.popup-content').html('<p>If the Moon is in the position you have chosen, you will see the Moon approximately as in this picture in the sky.</p><img src="common/moon/moon_12.00.png"><p>Eid is celebrated when the moon is first seen after new moon day after the month of Ramadan.<br><br>Half of the Moon is always lit by sunlight. To see the *Waxing Crescent Moon you have to position it such that less than half of the lit part is visible from the Earth.<br><br><span style="font-size:12px; font-style:italic;">*Waxing refers to the fortnight during which the Moon gets bigger.</span></p><p>If you need help with the activity, click the Demo button.</p><p class="c-white">Click X to continue.</p>');
                         }
-                        moon.addAnswer(dropId, false);
+                        moon.addAnswer(dropId, false, playattempt);
                         $('.feedback-popup').css('display', 'block');
                     } else {
                         myscore = myscore + 2;
                         $('.popup-small-head').html('Well done!')
                         $('.popup-small-content').html('<p>When less than half of the lit part of the Moon is visible from the Earth, we see a crescent.</p><p>Eid is celebrated when the crescent Moon is seen in the sky after the New Moon day.</p><p>The Waxing Crescent is seen between the New Moon and Waxing Half Moon.</p><p class="c-white">Click X to continue.</p>');
                         $('.feedback-popup-small').css('display', 'block');
-                        moon.addAnswer(dropId, true);
+                        moon.addAnswer(dropId, true, playattempt);
                     }
                 } else {
                     if (status == 'wrong') {
                         $('.popup-small-head').html('Sorry!')
                         $('.popup-small-content').html('<p>When less than half of the lit part of the Moon is visible from the Earth, we see a crescent.</p><p>Eid is celebrated when the crescent Moon is seen in the sky after the New Moon day.</p><p>The Waxing Crescent is seen between the New Moon and Waxing Half Moon.</p><p class="c-white">Click X to continue.</p>');
                         $('.feedback-popup-small').css('display', 'block');
-                        moon.addAnswer(dropId, false);
+                        moon.addAnswer(dropId, false, playattempt);
                     } else {
                         myscore = myscore + 1;
                         $('.popup-small-head').html('Well done!')
                         $('.popup-small-content').html('<p>When less than half of the lit part of the Moon is visible from the Earth, we see a crescent.</p><p>Eid is celebrated when the crescent Moon is seen in the sky after the New Moon day.</p><p>The Waxing Crescent is seen between the New Moon and Waxing Half Moon.</p><p class="c-white">Click X to continue.</p>');
                         $('.feedback-popup-small').css('display', 'block');
-                        moon.addAnswer(dropId, true);
+                        moon.addAnswer(dropId, true, playattempt);
                     }
                 }
                 playattempt++;
@@ -364,7 +364,8 @@
 
         $('.next-btn').click(function() {
             if ($(this).css('opacity') == 1) {
-                myData.attempt[qid - 1].endtime = timeStamp();
+                myData.appData.attempt[qid-1].clue_endTime = timeStamp();
+                myData.appData.attempt[qid-1].createdAt = timeStamp();
                 moon.save();
                 window.open('clue5.html', '_self');
             }
