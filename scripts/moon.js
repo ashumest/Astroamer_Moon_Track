@@ -32,7 +32,6 @@ var attempt = {
 }
 var moon = {
     start: function (lng) {
-        setuserdetail();
         myData.language = lng;
         myData.userId = $.cookie("user_id");
         myData.buddyIds = $.cookie("buddy_ids");
