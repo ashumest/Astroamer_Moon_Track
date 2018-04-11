@@ -126,7 +126,7 @@ var moon = {
         $.ajax({
             type: "POST",
             data: {
-                "payload": $.cookie("data"),
+                "payload": localStorage.getItem("data"),
                 'csrfmiddlewaretoken': csrftoken,
             },
             url: "/tools/logging",
