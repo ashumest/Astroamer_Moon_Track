@@ -1,6 +1,6 @@
 var myData = {
     "appName": "Astroamer_Moon_Track",
-    "language": "",
+    "language": '',
     "userId": "",
     "buddyIds": "",
     "sessionId": "",
@@ -19,7 +19,7 @@ var attempt = {
     "eventType": "clue_start",
     "currentClue": "",
     "cluestartTime": "",
-    "language": "en",
+    "language": '',
     "NumberofAttempts": 0,
     "FirstAttemptAnswer": "",
     "FirstAttemptValidity": "",
@@ -32,6 +32,7 @@ var attempt = {
 }
 var moon = {
     start: function (lng) {
+        localStorage.setItem("data", "");
         //setuserdetail();
         myData.language = lng;
         myData.userId = $.cookie("user_id");
@@ -76,12 +77,14 @@ var moon = {
                     obj.NumberofAttempts = a + 1;
                     obj.FirstAttemptAnswer = id;
                     obj.FirstAttemptValidity = 'correct';
+                    obj.language = lng;
                     obj.clueScore = '02';
                 } else {
                     var att = $.extend(true, {}, attempt);
                     obj.NumberofAttempts = a + 1;
                     obj.FirstAttemptAnswer = id;
                     obj.FirstAttemptValidity = 'incorrect';
+                    obj.language = lng;
                 }
             } else {
                 if (e) {
@@ -89,11 +92,13 @@ var moon = {
                     obj.SecondAttemptAnswer = id;
                     obj.SecondAttemptValidity = 'correct';
                     obj.clueScore = '01';
+                    obj.language = lng;
                 } else {
                     var att = $.extend(true, {}, attempt);
                     obj.NumberofAttempts = a + 1;
                     obj.SecondAttemptAnswer = id;
                     obj.SecondAttemptValidity = 'incorrect';
+                    obj.language = lng;
                 }
             }
 
@@ -118,7 +123,13 @@ var moon = {
         moon.save();
         csrftoken = $.cookie("csrftoken");
         /*$.ajax({
-            url: "../saveJson.php?data=" + localStorage.getItem("data"),
+            type: "POST",
+            data: {
+                "payload": localStorage.getItem("data"),
+                'csrfmiddlewaretoken': csrftoken,
+            },
+            url: "../saveJson.php",
+            datatype: "json",
             success: function (response) {
                 window.open('../data.json', '_blank');
             }
