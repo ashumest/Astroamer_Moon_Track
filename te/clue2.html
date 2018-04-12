@@ -129,9 +129,10 @@
     var dragStart = 0;
     var qid = 2;
     var dropId = '';
+    var lng = 'te';
     $(function() {
         moon.readData();
-        moon.addQuestion();
+        moon.addQuestion('దీపావళి నాడు ఒక చీకటి మరియు చంద్రుడు లేని రాత్రిలో, మనం దీపాలను వెలిగిస్తాము కావున మన ఇళ్లు స్వాగతిస్తూ మరియు ప్రకాశంగా ఉంటాయి. చంద్రుడు కక్ష్యలో ఎక్కడ ఉంటాడు?');
         getScore();
 
         $('.rules-btn1').click(function() {
@@ -220,27 +221,27 @@
                         } else if (wrongNo == '7' || wrongNo == '7-a') {
                             $('.popup-content').html('<p>మీరు ఎంపిక చేసుకున్న ప్రదేశంలో చంద్రుడు ఉన్నట్లైతే, మీరు ఆకాశంలో ఈ చిత్రంలో చంద్రుడిని సుమారుగా ఈ చిత్రంలో లాగా చూస్తారు. </p><img src="common/moon/moon_12.00.png"><p>సగం చంద్రుడు ఎల్లప్పుడూ సూర్యకాంతితో వెలుగుగా ఉంటాడు. అమావాస్య కొరకు వెలుతురుగా ఉండే భాగం ఏదీ భూమి నుంచి కనపడకుండా ఉండేట్లు  దీనిని ఉంచాలి.</p><p>కార్యకలాపం గురించి మీకు సహాయం కావాలంటే, డెమో బటన్‌ని క్లిక్ చేయండి. </p><p class="c-white">కొనసాగడానికి X క్లిక్ చేయండి. </p>');
                         }
-                        moon.addAnswer(dropId, false);
+                        moon.addAnswer(dropId, false, playattempt);
                         $('.feedback-popup').css('display', 'block');
                     } else {
                         myscore = myscore + 2;
                         $('.popup-small-head').html('బాగాచేసారు!')
                         $('.popup-small-content').html('<p>భూమి నుండి  చంద్రుడి యొక్క వెలుతురుగా ఉండే భాగం ఏదీ కనపించనప్పుడు, మనం దీనిని అమావాస్యగా అంటాము.</p><p class="c-white">కొనసాగడానికి X క్లిక్ చేయండి. </p>');
                         $('.feedback-popup-small').css('display', 'block');
-                        moon.addAnswer(dropId, true);
+                        moon.addAnswer(dropId, true, playattempt);
                     }
                 } else {
                     if (status == 'wrong') {
                         $('.popup-small-head').html('క్షమించండి!')
                         $('.popup-small-content').html('<p>భూమి నుండి  చంద్రుడి యొక్క వెలుతురుగా ఉండే భాగం ఏదీ కనపించనప్పుడు, మనం దీనిని అమావాస్యగా అంటాము.</p><p class="c-white">కొనసాగడానికి X క్లిక్ చేయండి. </p>');
                         $('.feedback-popup-small').css('display', 'block');
-                        moon.addAnswer(dropId, false);
+                        moon.addAnswer(dropId, false, playattempt);
                     } else {
                         myscore = myscore + 1;
                         $('.popup-small-head').html('బాగాచేసారు!')
                         $('.popup-small-content').html('<p>భూమి నుండి  చంద్రుడి యొక్క వెలుతురుగా ఉండే భాగం ఏదీ కనపించనప్పుడు, మనం దీనిని అమావాస్యగా అంటాము.</p><p class="c-white">కొనసాగడానికి X క్లిక్ చేయండి. </p>');
                         $('.feedback-popup-small').css('display', 'block');
-                        moon.addAnswer(dropId, true);
+                        moon.addAnswer(dropId, true, playattempt);
                     }
                 }
                 playattempt++;
@@ -360,7 +361,8 @@
 
         $('.next-btn').click(function() {
             if ($(this).css('opacity') == 1) {
-                myData.attempt[qid - 1].endtime = timeStamp();
+                myData.appData.attempt[qid-1].clue_endTime = timeStamp();
+                myData.appData.attempt[qid-1].createdAt = timeStamp();
                 moon.save();
                 window.open('clue3.html', '_self');
             }
