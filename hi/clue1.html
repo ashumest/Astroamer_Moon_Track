@@ -134,9 +134,10 @@
     var status = '';
     var qid = 1;
     var dropId = '';
+    var lng = 'hi';
     $(function() {
         moon.readData();
-        moon.addQuestion();
+        moon.addQuestion('साल में एक दिन जब चंद्रमा होता है अपने पूर्ण रूप में, मनाते हैं हम गौतम का जन्मदिन बुद्धपूर्णिमा के रूप में| बताइए चंद्रमा अपनी कक्षा में कहां होगा?');
         getScore();
 
         $('.rules-btn1').click(function() {
@@ -226,27 +227,27 @@
                         } else if (wrongNo == '7' || wrongNo == '7-a') {
                             $('.popup-content').html('<p>अगर चंद्रमा आपकी चुनी हुई जगह पर हो, तो आपको आकाश में चंद्रमा कुछ-कुछ इस चित्र जैसा दिखेगा।</p><img src="common/moon/moon_12.00.png"><p>चंद्रमा का आधा भाग सूर्य द्वारा हमेशा प्रकाशित रहता है।पूर्ण चंद्रमा देखने के लिए आपको उसे इस तरह रखना होगा कि उसका सम्पूर्ण प्रकाशित भाग पृथ्वी से दिखाई दे।</p><p>यदि आपको गतिविधि करने में मदद चाहिए तो डेमों बटन पर क्लिक कीजिए।</p><p class="c-white">आगे जाने के लिए X पर क्लिक करें।</p>');
                         }
-                        moon.addAnswer(dropId, false);
+                        moon.addAnswer(dropId, false, playattempt);
                         $('.feedback-popup').css('display', 'block');
                     } else {
                         myscore = myscore + 2;
                         $('.popup-small-head').html('बहुत ख़ूब!')
                         $('.popup-small-content').html('<p>पूर्णिमा तब होती है जब चंद्रमा का सम्पूर्ण प्रकाशित भाग पृथ्वी से दिखता है।</p><p class="c-white">आगे जाने के लिए X पर क्लिक करें।</p>');
                         $('.feedback-popup-small').css('display', 'block');
-                        moon.addAnswer(dropId, true);
+                        moon.addAnswer(dropId, true, playattempt);
                     }
                 } else {
                     if (status == 'wrong') {
                         $('.popup-small-head').html('खेद है!')
                         $('.popup-small-content').html('<p>पूर्णिमा तब होती है जब चंद्रमा का सम्पूर्ण प्रकाशित भाग पृथ्वी से दिखता है।</p><p class="c-white">आगे जाने के लिए X पर क्लिक करें।</p>');
                         $('.feedback-popup-small').css('display', 'block');
-                        moon.addAnswer(dropId, false);
+                        moon.addAnswer(dropId, false, playattempt);
                     } else {
                         myscore = myscore + 1;
                         $('.popup-small-head').html('बहुत ख़ूब!')
                         $('.popup-small-content').html('<p>पूर्णिमा तब होती है जब चंद्रमा का सम्पूर्ण प्रकाशित भाग पृथ्वी से दिखता है।</p><p class="c-white">आगे जाने के लिए X पर क्लिक करें।</p>');
                         $('.feedback-popup-small').css('display', 'block');
-                        moon.addAnswer(dropId, true);
+                        moon.addAnswer(dropId, true, playattempt);
                     }
                 }
                 playattempt++;
@@ -367,7 +368,8 @@
 
         $('.next-btn').click(function() {
             if ($(this).css('opacity') == 1) {
-                myData.attempt[qid-1].endtime = timeStamp();
+                myData.appData.attempt[qid-1].clue_endTime = timeStamp();
+                myData.appData.attempt[qid-1].createdAt = timeStamp();
                 moon.save();
                 window.open('clue2.html', '_self');
             }

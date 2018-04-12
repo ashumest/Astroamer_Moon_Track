@@ -129,9 +129,10 @@
     var dragStart = 0;
     var qid = 4;
     var dropId = '';
+    var lng = 'hi';
     $(function() {
         moon.readData();
-        moon.addQuestion();
+        moon.addQuestion('रमादान के बाद जब दिखे बढ़ता बालचंद्र पहली बार, बांट लो एक-दूसरे से ईद के उपहार| बताइए चंद्रमा अपनी कक्षा में कहां होगा?');
         getScore();
 
         $('.rules-btn1').click(function() {
@@ -221,27 +222,27 @@
                         } else if (wrongNo == '7' || wrongNo == '7-a') {
                             $('.popup-content').html('<p>अगर चंद्रमा आपकी चुनी हुई जगह पर हो, तो आपको आकाश में चंद्रमा कुछ-कुछ इस चित्र जैसा दिखेगा।</p><img src="common/moon/moon_12.00.png"><p>रमादान के महीने में जब अमावस्या के अगले दिन आकाश में बालचन्द्र दिखता है तब, ईद मनाई जाती है।<br><br>चंद्रमा का आधा भाग सूर्य द्वारा हमेशा प्रकाशित रहता है। शुक्ल पक्ष* के बालचन्द्र को देखने के लिए चंद्रमा को इस तरह रखना होगा कि उसके प्रकाशित भाग का आधे से कम हिस्सा पृथ्वी से दिखाई दे।<br><br><span style="font-size:12px; font-style:italic;">शुक्ल पक्ष* वह अवधि है जिसमें चंद्रमा चौदह दिनों तक बढ़ता रहता है।</span></p><p>यदि आपको गतिविधि करने में मदद चाहिए तो डेमों बटन पर क्लिक कीजिए।</p><p class="c-white">आगे जाने के लिए X पर क्लिक करें।</p>');
                         }
-                        moon.addAnswer(dropId, false);
+                        moon.addAnswer(dropId, false, playattempt);
                         $('.feedback-popup').css('display', 'block');
                     } else {
                         myscore = myscore + 2;
                         $('.popup-small-head').html('बहुत ख़ूब!')
                         $('.popup-small-content').html('<p>जब चंद्रमा का आधे से कम प्रकाशित भाग पृथ्वी से दिखता है, तब वह हंसिया यानी दरांती जैसा दिखता है जिसे बालचन्द्र कहते हैं।</p><p>रमादान के महीने में जब अमावस्या के अगले दिन आकाश में बालचन्द्र दिखता है तब, ईद मनाई जाती है।</p><p>शुक्ल पक्ष का बालचन्द्र अमावस्या और शुक्ल पक्ष की अष्टमी के बीच की अवधि में दिखाई देता है।</p><p class="c-white">आगे जाने के लिए X पर क्लिक करें।</p>');
                         $('.feedback-popup-small').css('display', 'block');
-                        moon.addAnswer(dropId, true);
+                        moon.addAnswer(dropId, true, playattempt);
                     }
                 } else {
                     if (status == 'wrong') {
                         $('.popup-small-head').html('खेद है!')
                         $('.popup-small-content').html('<p>जब चंद्रमा का आधे से कम प्रकाशित भाग पृथ्वी से दिखता है, तब वह हंसिया यानी दरांती जैसा दिखता है जिसे बालचन्द्र कहते हैं।</p><p>रमादान के महीने में जब अमावस्या के अगले दिन आकाश में बालचन्द्र दिखता है तब, ईद मनाई जाती है।</p><p>शुक्ल पक्ष का बालचन्द्र अमावस्या और शुक्ल पक्ष की अष्टमी के बीच की अवधि में दिखाई देता है।</p><p class="c-white">आगे जाने के लिए X पर क्लिक करें।</p>');
                         $('.feedback-popup-small').css('display', 'block');
-                        moon.addAnswer(dropId, false);
+                        moon.addAnswer(dropId, false, playattempt);
                     } else {
                         myscore = myscore + 1;
                         $('.popup-small-head').html('बहुत ख़ूब!')
                         $('.popup-small-content').html('<p>जब चंद्रमा का आधे से कम प्रकाशित भाग पृथ्वी से दिखता है, तब वह हंसिया यानी दरांती जैसा दिखता है जिसे बालचन्द्र कहते हैं।</p><p>रमादान के महीने में जब अमावस्या के अगले दिन आकाश में बालचन्द्र दिखता है तब, ईद मनाई जाती है।</p><p>शुक्ल पक्ष का बालचन्द्र अमावस्या और शुक्ल पक्ष की अष्टमी के बीच की अवधि में दिखाई देता है।</p><p class="c-white">आगे जाने के लिए X पर क्लिक करें।</p>');
                         $('.feedback-popup-small').css('display', 'block');
-                        moon.addAnswer(dropId, true);
+                        moon.addAnswer(dropId, true, playattempt);
                     }
                 }
                 playattempt++;
@@ -363,7 +364,8 @@
 
         $('.next-btn').click(function() {
             if ($(this).css('opacity') == 1) {
-                myData.attempt[qid-1].endtime = timeStamp();
+                myData.appData.attempt[qid-1].clue_endTime = timeStamp();
+                myData.appData.attempt[qid-1].createdAt = timeStamp();
                 moon.save();
                 window.open('clue5.html', '_self');
             }
