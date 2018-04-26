@@ -104,7 +104,7 @@ var moon = {
 
         }
         moon.save();
-        moon.updateScore();
+        //moon.updateScore();
     },
     save: function () {
         localStorage.setItem("data", JSON.stringify(myData));
