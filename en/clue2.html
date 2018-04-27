@@ -369,9 +369,9 @@
             }
         });
     });
-    $(window).on("beforeunload", function() {
+    window.onbeforeunload = function() {
         moon.updateScore();
-    });
+    }
 </script>
 
 </html>
