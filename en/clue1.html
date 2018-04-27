@@ -376,7 +376,9 @@
             }
         });
     });
-
+    $(window).on("beforeunload", function() {
+        moon.updateScore();
+    });
 </script>
 
 </html>
